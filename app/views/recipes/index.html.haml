@@ -1,0 +1,75 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading Recipe Search
+            .panel-body
+              =simple_form_for @recipe_search, :method => :get, :url => recipes_path do |f|
+                .row
+                  .col-sm-6.col.xs-12 
+                    .col-xs-4
+                      =f.label :name
+                    .col-xs-8
+                      =f.input_field :name 
+                  .col-sm-6.col.xs-12 
+                    .col-xs-4
+                      =f.label :course
+                    .col-xs-8
+                      =f.select :course, CourseType.all.map {|ct| [ct.name, ct.id]}, :include_blank => true
+                .row
+                  .col-sm-6.col.xs-12
+                    .col-xs-4
+                      =f.label :max_time
+                    .col-xs-8
+                      =f.input_field :max_time 
+                  .col-sm-6.col.xs-12
+                    .col-xs-4
+                      =f.label :cuisine_category
+                    .col-xs-8
+                      =f.select :cuisine_category, CuisineCategory.all.map {|cc| [cc.name, cc.id]}, :include_blank => true
+                .row
+                  .col-xs-12
+                    %center
+                      =f.submit "Find", :class => 'btn btn-sm btn-default'
+      -unless @recipes.nil?
+        .row 
+          .col-xs-12
+            .panel.panel-default
+              .panel-heading Recipes
+              .panel-body
+                -@recipes.each do |recipe|
+                  .col-xs-6
+                    .panel.panel-default
+                      .panel-heading= link_to recipe.name, recipe_path(recipe)
+                      .panel-body
+                        .row
+                          .col-sm-6.col-xs-12
+                            .row
+                              .col-xs-5 
+                                %strong Prep Time
+                              .col-xs-7
+                                = "#{recipe.prep_time.to_i} minutes"
+                          .col-sm-6.col-xs-12
+                            .row
+                              .col-xs-5 
+                                %strong Cook Time
+                              .col-xs-7
+                                = "#{recipe.cook_time.to_i} minutes"
+                        %br
+                        .row
+                          .col-sm-6.col-xs-12
+                            .row
+                              .col-xs-5 
+                                %strong Cuisine Type(s)
+                              .col-xs-7
+                                = recipe.cuisine_categories.map { |cc| cc.name}.join(', ')
+                          .col-sm-6.col-xs-12
+                            .row
+                              .col-xs-5 
+                                %strong Course
+                              .col-xs-7
+                                =recipe.course_types.map { |ct| ct.name }.join(', ')
+
+

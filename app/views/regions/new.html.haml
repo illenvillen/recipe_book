@@ -1,0 +1,20 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading New Region
+            .panel-body
+              .panel-body
+                =simple_form_for @region do |f|
+                  .row
+                    .col-sm-6.col.xs-12 
+                      .col-xs-4
+                        =f.label :name
+                      .col-xs-8
+                        =f.input_field :name 
+                  .row
+                    .col-xs-12
+                      %center
+                        =f.submit "Create Region"

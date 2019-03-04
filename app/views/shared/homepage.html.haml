@@ -1,0 +1,36 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        - Recipe.six_random_recipes.each do |recipe|
+          .col-xs-6
+            .panel.panel-default
+              .panel-heading= link_to recipe.name, recipe_path(recipe)
+              .panel-body
+                .row
+                  .col-sm-6.col-xs-12
+                    .row
+                      .col-xs-5 
+                        %strong Prep Time
+                      .col-xs-7
+                        = "#{recipe.prep_time.to_i} minutes"
+                  .col-sm-6.col-xs-12
+                    .row
+                      .col-xs-5 
+                        %strong Cook Time
+                      .col-xs-7
+                        = "#{recipe.cook_time.to_i} minutes"
+                %br
+                .row
+                  .col-sm-6.col-xs-12
+                    .row
+                      .col-xs-5 
+                        %strong Cuisine Type(s)
+                      .col-xs-7
+                        = recipe.cuisine_categories.map { |cc| cc.name}.join(', ')
+                  .col-sm-6.col-xs-12
+                    .row
+                      .col-xs-5 
+                        %strong Course
+                      .col-xs-7
+                        = recipe.course_types.map { |ct| ct.name}.join(', ')

@@ -1,0 +1,24 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading New Cuisine Category
+            .panel-body
+              .panel-body
+                =simple_form_for @cuisine_category do |f|
+                  .row
+                    .col-sm-6.col.xs-12 
+                      .col-xs-4
+                        =f.label :name
+                      .col-xs-8
+                        =f.input_field :name 
+                    .col-sm-6.col.xs-12 
+                      .col-xs-4
+                        =f.label :region_id
+                      .col-xs-8
+                        =f.select :region_id, Region.all.map {|r| [r.name, r.id.to_i]}
+                  .row
+                    %center
+                      =f.submit "Create Cuisine Category"

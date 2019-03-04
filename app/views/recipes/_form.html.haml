@@ -1,0 +1,67 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading New Recipe
+            .panel-body
+              .panel-body
+                =simple_form_for @recipe do |f|
+                  .row
+                    .col-sm-6.col.xs-12
+                      .form-group 
+                        .col-xs-4
+                          =f.label :name
+                        .col-xs-8
+                          =f.input_field :name, :class => 'form-control'
+                    .col-sm-6.col.xs-12
+                      .form-group 
+                        .col-xs-4
+                          =f.label :difficulty
+                        .col-xs-8
+                          =f.select :difficulty, Recipe::DIFFICULTIES, :class => 'form-control'
+                  .row
+                    .col-sm-6.col.xs-12 
+                      .form-group 
+                        .col-xs-4
+                          =f.label :prep_time, "Prep Time (mins):"
+                        .col-xs-8
+                          =f.input_field :prep_time, :class => 'form-control'
+                    .col-sm-6.col.xs-12 
+                      .form-group 
+                        .col-xs-4
+                          =f.label :cook_time, "Cook Time (mins):"
+                        .col-xs-8
+                          =f.input_field :cook_time, :class => 'form-control'
+                  .row
+                    .col-sm-6.col.xs-12 
+                      .form-group 
+                        .col-xs-4
+                          =f.label :cuisine_categories
+                        .col-xs-8
+                          =f.select :cuisine_categories, CuisineCategory.all.map {|cc| [cc.name, cc.id]}, :multiple => true, :class => 'form-control'
+                    .col-sm-6.col.xs-12 
+                      .form-group 
+                        .col-xs-4
+                          =f.label :course_types
+                        .col-xs-8
+                          =f.select :course_types, CourseType.all.map {|ct| [ct.name, ct.id]}, :input_html => {:multiple => true}, :class => 'form-control'
+                  -step_num = 1
+                  = f.simple_fields_for :steps do |s|
+                    .row
+                      .col.xs-12
+                        .form-group  
+                          .col-xs-2
+                            =s.label :step_text, "Step #{step_num}:"
+                          .col-xs-10
+                            =s.input_field :step_text, :class => 'form-control'
+                    -step_num += 1
+                  .row
+                    %center
+                      -if @new
+                        =f.submit "Create Recipe"
+                      -else
+                        =f.submit "Save Recipe"
+
+

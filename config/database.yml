@@ -1,0 +1,49 @@
+
+
+#Postgres DB
+# default: &default
+#   adapter: postgresql
+#   encoding: utf8
+#   database: illen_recipe_book
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: cook
+#   password: recipe
+#   host: localhost
+
+# development:
+#   <<: *default
+#   database: illen_recipe_book
+
+# test:
+#   <<: *default
+#   database: testdb
+
+# production:
+#   <<: *default
+#   database: testdb
+#   username: cook
+#   password: <%= ENV['DBTESTER_DATABASE_PASSWORD'] %>
+
+
+# gem install sqlite3 --platform=ruby
+# bundle update [installs sqlite3]
+# gem uninstall sqlite3 [shows selection]
+# remove "mingw32" variant
+# rails s [should work 100%]
+
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
+
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+production:
+  <<: *default
+  database: db/production.sqlite3

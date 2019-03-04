@@ -1,0 +1,30 @@
+!!!  html
+%html
+  %head
+    %title Recipe Book
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  
+  %body
+    #banner.col-12
+      .row 
+        .col-xs-1
+          %button#sidebarCollapse.btn.btn-info.navbat-btn
+            %i.fa.fa-bars
+            Show/Hide Menu
+        .col-xs-11
+          %center
+            = @page_tile || "Recipe Book"
+    #panels.col-12
+      #wrapper.col-12
+        .row
+          #sidebar.col-sm-1.col-xs-12
+            %ul.nav.flex-column.flex-nowrap
+              = render :partial => "/sidebar_menu_item"
+          #main.col-sm-11.col-xs-12
+            = yield
+
+

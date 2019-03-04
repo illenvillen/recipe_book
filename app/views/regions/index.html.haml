@@ -1,0 +1,16 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading Regions
+            .panel-body
+              %table.table.table-striped
+                %tr
+                  %th Name
+                  %th Description
+                - @regions.each do |region|
+                  %tr
+                    %td= region.name
+                    %td= "a dec" 

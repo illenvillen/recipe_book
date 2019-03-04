@@ -1,0 +1,18 @@
+.container
+  .row-fluid
+    .col-xs-12
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-heading Cuisine Categories
+            .panel-body
+              %table.table.table-striped
+                %tr
+                  %th Name
+                  %th Description
+                  %th Region
+                - @cuisine_categories.each do |cc|
+                  %tr
+                    %td= cc.name
+                    %td= "a dec" 
+                    %td= cc.region.name
