@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_02_221049) do
+ActiveRecord::Schema.define(version: 2019_03_10_013406) do
 
   create_table "amounts", force: :cascade do |t|
     t.string "measurement"
@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(version: 2019_03_02_221049) do
 
   create_table "course_types", force: :cascade do |t|
     t.string "name"
+    t.string "description"
   end
 
   create_table "cuisine_categories", force: :cascade do |t|
     t.string "name"
     t.integer "region_id"
+    t.string "description"
   end
 
   create_table "ingredient_amounts", force: :cascade do |t|
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_221049) do
 
   create_table "regions", force: :cascade do |t|
     t.string "name"
+    t.string "description"
   end
 
   create_table "steps", force: :cascade do |t|

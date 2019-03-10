@@ -7,22 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 CourseType.destroy_all
 CourseType.create([ 
-  {:name => "Entree"},
-  {:name => "Soft Drink"},
-  {:name => "Alcoholic Drink"},
-  {:name => "Dessert"},
-  {:name => "Carb Side"},
-  {:name => "Vegetable Side"}
+  {:name => "Entree", :description => "The main course"},
+  {:name => "Soft Drink", :description => "A non-alcoholic drink"},
+  {:name => "Alcoholic Drink", :description => "A drink with alcohol in it"},
+  {:name => "Dessert", :description => "The best course"},
+  {:name => "Carb Side", :description => "A side dish that is mostly carbohydrates"},
+  {:name => "Vegetable Side", :description => "A side dish that is mostly vegetables"}
 ])
 
 Region.destroy_all
 Region.create([ 
-  {:name => "South East Asia"},
-  {:name => "Asia"},
-  {:name => "Americas"},
-  {:name => "Europe"},
-  {:name => "Middle East"},
-  {:name => "Africa"}
+  {:name => "South East Asia", :description => "SEA"},
+  {:name => "Asia", :description => "AS"},
+  {:name => "Americas", :description => "AM"},
+  {:name => "Europe", :description => "EU"},
+  {:name => "Middle East", :description => "ME"},
+  {:name => "Africa", :description => "AF"}
 ])
 
 CuisineCategory.destroy_all
@@ -30,13 +30,13 @@ americas_region = Region.where(:name => "Americas").first
 sea_region = Region.where(:name => "South East Asia").first
 euro_region = Region.where(:name => "Europe").first
 CuisineCategory.create([ 
-  {:name => "Vietnamese", :region => sea_region},
-  {:name => "Thai", :region => sea_region},
-  {:name => "BBQ", :region => americas_region},
-  {:name => "Mexican", :region => americas_region},
-  {:name => "Greek", :region => euro_region},
-  {:name => "French", :region => euro_region},
-  {:name => "Italian", :region => euro_region},
+  {:name => "Vietnamese", :region => sea_region, :description => "Distintive flavors that focus on one of the five fundamental tastes"},
+  {:name => "Thai", :region => sea_region, :description => "Intense flavors with a lot of vegetables and rice"},
+  {:name => "BBQ", :region => americas_region, :description => "An american style focused on smoking"},
+  {:name => "Tex-Mex", :region => americas_region, :description => "An americanized versin of Mexan cuisine"},
+  {:name => "Greek", :region => euro_region, :description => "Heavy use of vegetables, olice oil, grains, wine, meat, lamb, and olives"},
+  {:name => "French", :region => euro_region, :description => "Light sauces and airy desserts"},
+  {:name => "Italian", :region => euro_region, :description => "Heavy sauces and filling meals"}
 ])
 
 Recipe.destroy_all
@@ -51,7 +51,7 @@ Recipe.create([
       Step.create({:step_text => 'Place ingredients out on lazy susan'}),
       Step.create({:step_text => 'Consume'})
     ],
-    :cuisine_categories => CuisineCategory.where(:name => 'Mexican'),
+    :cuisine_categories => CuisineCategory.where(:name => 'Tex-Mex'),
     :course_types => CourseType.where(:name => 'Entree')
   },
   {
