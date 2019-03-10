@@ -48,7 +48,7 @@
                         .col-xs-4
                           =f.label :cuisine_categories
                         .col-xs-8
-                          =f.select :cuisine_categories, CuisineCategory.all.map {|cc| [cc.name, cc.id]}, :multiple => true, :class => 'form-control'
+                          =f.collection_select :cuisine_categories, CuisineCategory.all, :id, :name, {}, {:multiple => true, :class => 'form-control'}
                           .text-error
                             =f.error :cuisine_categories
                     .col-sm-6.col.xs-12 
@@ -56,7 +56,7 @@
                         .col-xs-4
                           =f.label :course_types
                         .col-xs-8
-                          =f.select :course_types, CourseType.all.map {|ct| [ct.name, ct.id]}, :input_html => {:multiple => true}, :class => 'form-control'
+                          =f.collection_select :course_types, CourseType.all, :id, :name, {}, {:multiple => true, :class => 'form-control'}
                           .text-error
                             =f.error :course_types
                   -step_num = 1

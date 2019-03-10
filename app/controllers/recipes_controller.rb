@@ -27,8 +27,8 @@ class RecipesController < ApplicationController
   end
 
   def create
-    params[:recipe][:course_types] = CourseType.where(:id => params[:recipe][:course_types].to_i)
-    params[:recipe][:cuisine_categories] = CuisineCategory.where(:id => params[:recipe][:cuisine_categories].to_i)
+    params[:recipe][:course_types] = CourseType.where(:id => params[:recipe][:course_types].map { |ct| ct.to_i })
+    params[:recipe][:cuisine_categories] = CuisineCategory.where(:id => params[:recipe][:cuisine_categories].map { |cc| cc.to_i })
 
     @recipe = Recipe.new(params[:recipe].to_unsafe_hash)
     if @recipe.valid?

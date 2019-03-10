@@ -64,7 +64,7 @@ Recipe.create([
       Step.create({:step_text => 'Add ingredients to broth'}),
       Step.create({:step_text => 'Heat and Consume'})
     ],
-    :cuisine_categories => CuisineCategory.where(:name => 'Thai'),
+    :cuisine_categories => CuisineCategory.where(:name => 'Vietnamese'),
     :course_types => CourseType.where(:name => 'Entree')
   },
   {
