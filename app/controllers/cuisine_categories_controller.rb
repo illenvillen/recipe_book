@@ -18,10 +18,14 @@ class CuisineCategoriesController < ApplicationController
     region = Region.find(params[:cuisine_category][:region_id])
 
     @cuisine_category = CuisineCategory.new(:region => region, :name => params[:cuisine_category][:name])
-    @cuisine_category.save!
+    if @cuisine_category.valid?
+      @cuisine_category.save!
 
-    @cuisine_categories = CuisineCategory.all
-    redirect_to cuisine_categories_path
+      @cuisine_categories = CuisineCategory.all
+      redirect_to cuisine_categories_path
+    else
+      render 'new'
+    end
   end
 
   def edit

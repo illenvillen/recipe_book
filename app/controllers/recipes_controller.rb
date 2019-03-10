@@ -31,13 +31,18 @@ class RecipesController < ApplicationController
     params[:recipe][:cuisine_categories] = CuisineCategory.where(:id => params[:recipe][:cuisine_categories].to_i)
 
     @recipe = Recipe.new(params[:recipe].to_unsafe_hash)
-    @recipe.save!
+    if @recipe.valid?
+      @recipe.save!
 
-    @recipe.steps.each do |step|
-      step.save!
+      @recipe.steps.each do |step|
+        step.save!
+      end
+
+      redirect_to recipe_path(@recipe)
+    else
+      render 'new'
     end
 
-    redirect_to recipe_path(@recipe)
   end
 
   def edit

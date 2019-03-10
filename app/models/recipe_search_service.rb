@@ -32,10 +32,10 @@ class RecipeSearchService
       total_time_recipes = ActiveRecord::Base.connection.exec_query(query).map { |r| r["id"] if r["total_time"].to_i <= search_params[:max_time].to_i }
       @recipes = @recipes.where(:id => total_time_recipes)
     end
-
     
     @recipes = @recipes.joins(:cuisine_categories).where(:cuisine_categories => {:id => search_params[:cuisine_category].to_i}) unless search_params[:cuisine_category].empty?
     @recipes = @recipes.joins(:course_types).where(:course_types => {:id => search_params[:course].to_i}) unless search_params[:course].empty?
+    @recipes = @recipes.order(:name)
 
   end
 

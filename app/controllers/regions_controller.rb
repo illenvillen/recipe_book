@@ -15,10 +15,15 @@ class RegionsController < ApplicationController
 
   def create
     @region = Region.new(params[:region].to_unsafe_hash)
-    @region.save!
 
-    @regions = Region.all
-    redirect_to regions_path
+    if @region.valid?
+      @region.save!
+
+      @regions = Region.all
+      redirect_to regions_path
+    else
+      render 'new'
+    end
   end
 
   def edit

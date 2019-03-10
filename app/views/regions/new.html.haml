@@ -13,7 +13,9 @@
                       .col-xs-4
                         =f.label :name
                       .col-xs-8
-                        =f.input_field :name 
+                        =f.input_field :name
+                        .text-error
+                          =f.error :name 
                   .row
                     .col-xs-12
                       %center

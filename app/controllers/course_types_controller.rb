@@ -16,10 +16,14 @@ class CourseTypesController < ApplicationController
 
   def create
     @course_type = CourseType.new(params[:course_type].to_unsafe_hash)
-    @course_type.save!
+    if @course_type.valid?
+      @course_type.save!
 
-    @course_types = CourseType.all
-    redirect_to course_types_path
+      @course_types = CourseType.all
+      redirect_to course_types_path
+    else
+      render 'new'
+    end
   end
 
   def edit

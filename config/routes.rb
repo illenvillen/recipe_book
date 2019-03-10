@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   match 'create_new' => 'application#create_new', :via => [:get]
   match 'homepage' => 'application#homepage', :via => [:get]
+  match 'admin' => 'application#admin', :via => [:get]
 end

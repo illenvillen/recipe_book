@@ -14,11 +14,15 @@
                         =f.label :name
                       .col-xs-8
                         =f.input_field :name 
+                        .text-error
+                          =f.error :name
                     .col-sm-6.col.xs-12 
                       .col-xs-4
                         =f.label :region_id
                       .col-xs-8
                         =f.select :region_id, Region.all.map {|r| [r.name, r.id.to_i]}
+                        .text-error
+                          =f.error :region_id
                   .row
                     %center
                       =f.submit "Create Cuisine Category"

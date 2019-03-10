@@ -7,6 +7,12 @@ class Recipe < ApplicationRecord
   has_many :recipe_courses
   has_many :course_types, :through => :recipe_courses
 
+  validates :cuisine_categories, :presence => true
+  validates :course_types, :presence => true
+  validates :name, :presence => true
+  validates :prep_time, :presence => true, :numericality =>  {:greater_than_or_equal_to => 0}
+  validates :cook_time, :presence => true, :numericality =>  {:greater_than_or_equal_to => 0}
+
   accepts_nested_attributes_for :steps
 
   DIFFICULTIES = [

@@ -15,12 +15,16 @@
                           =f.label :name
                         .col-xs-8
                           =f.input_field :name, :class => 'form-control'
+                          .text-error
+                            =f.error :name
                     .col-sm-6.col.xs-12
                       .form-group 
                         .col-xs-4
                           =f.label :difficulty
                         .col-xs-8
                           =f.select :difficulty, Recipe::DIFFICULTIES, :class => 'form-control'
+                          .text-error
+                            =f.error :difficulty
                   .row
                     .col-sm-6.col.xs-12 
                       .form-group 
@@ -28,12 +32,16 @@
                           =f.label :prep_time, "Prep Time (mins):"
                         .col-xs-8
                           =f.input_field :prep_time, :class => 'form-control'
+                          .text-error
+                            =f.error :prep_time
                     .col-sm-6.col.xs-12 
                       .form-group 
                         .col-xs-4
                           =f.label :cook_time, "Cook Time (mins):"
                         .col-xs-8
                           =f.input_field :cook_time, :class => 'form-control'
+                          .text-error
+                            =f.error :cook_time
                   .row
                     .col-sm-6.col.xs-12 
                       .form-group 
@@ -41,12 +49,16 @@
                           =f.label :cuisine_categories
                         .col-xs-8
                           =f.select :cuisine_categories, CuisineCategory.all.map {|cc| [cc.name, cc.id]}, :multiple => true, :class => 'form-control'
+                          .text-error
+                            =f.error :cuisine_categories
                     .col-sm-6.col.xs-12 
                       .form-group 
                         .col-xs-4
                           =f.label :course_types
                         .col-xs-8
                           =f.select :course_types, CourseType.all.map {|ct| [ct.name, ct.id]}, :input_html => {:multiple => true}, :class => 'form-control'
+                          .text-error
+                            =f.error :course_types
                   -step_num = 1
                   = f.simple_fields_for :steps do |s|
                     .row

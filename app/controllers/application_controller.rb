@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def homepage
     render 'shared/homepage'
   end
+
+  def admin
+    render 'shared/admin'
+  end
 end

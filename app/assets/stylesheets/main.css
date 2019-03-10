@@ -16,3 +16,9 @@
 .panel-heading.row {
   margin: auto;
 }
+
+.text-error {
+  font-size: x-small;
+  color: red;
+  font-weight: bold;
+}

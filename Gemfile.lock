@@ -55,6 +55,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.4.9)
       execjs
+    awesome_print (1.8.0)
     bindex (0.5.0)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
@@ -121,7 +122,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1-x64-mingw32)
       mini_portile2 (~> 2.4.0)
-    pg (1.1.4-x64-mingw32)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -212,6 +212,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  awesome_print
   bootsnap (>= 1.1.0)
   bootstrap-sass
   byebug
@@ -223,7 +224,6 @@ DEPENDENCIES
   font-awesome-sass
   haml
   jbuilder (~> 2.5)
-  pg
   puma (~> 3.11)
   rails (~> 5.2.2)
   sass-rails (~> 5.0)
