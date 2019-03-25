@@ -9,10 +9,13 @@
 * Database 
 * run "rails db:create"
 * run "rails db:migrate"
-* run "rails db:seed
+* run "rails db:seed"
 
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+
+* Project Roadmap
+* https://tree.taiga.io/project/illenvillen-my-recipe-book/backlog
