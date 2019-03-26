@@ -7,7 +7,7 @@
             .panel-heading New Recipe
             .panel-body
               .panel-body
-                =simple_form_for @recipe do |f|
+                =simple_form_for setup_recipe(@recipe) do |f|
                   .row
                     .col-sm-6.col.xs-12
                       .form-group 
@@ -59,10 +59,34 @@
                           =f.collection_select :course_types, CourseType.all, :id, :name, {}, {:multiple => true, :class => 'form-control'}
                           .text-error
                             =f.error :course_types
+                  .row 
+                    %strong Ingredients
+                  .row
+                    .col-xs-12
+                      .col-xs-3
+                        %center Qnty.
+                      .col-xs-3
+                        %center Measurement
+                      .col-xs-6
+                        %center Ingredient
+                  = f.simple_fields_for :ingredient_amounts do |ia|
+                    .row 
+                      .col-xs-12
+                        .form-group
+                          = ia.simple_fields_for :amount do |amt|
+                            .col-xs-3
+                              = amt.input_field :quantity, :class => 'form-control'
+                            .col-xs-3
+                              = amt.input_field :measurement, :class => 'form-control'
+                          = ia.simple_fields_for :ingredient do |ing|
+                            .col-xs-6
+                              = ing.input_field :name, :class => 'form-control'
+                  .row 
+                    %strong Steps
                   -step_num = 1
                   = f.simple_fields_for :steps do |s|
                     .row
-                      .col.xs-12
+                      .col-xs-12
                         .form-group  
                           .col-xs-2
                             =s.label :step_text, "Step #{step_num}:"

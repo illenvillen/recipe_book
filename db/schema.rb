@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_013406) do
+ActiveRecord::Schema.define(version: 2019_03_25_160931) do
 
   create_table "amounts", force: :cascade do |t|
     t.string "measurement"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 2019_03_10_013406) do
   create_table "recipe_cuisines", force: :cascade do |t|
     t.integer "recipe_id"
     t.integer "cuisine_category_id"
+  end
+
+  create_table "recipe_ingredient_amounts", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "ingredient_amount_id"
   end
 
   create_table "recipes", force: :cascade do |t|

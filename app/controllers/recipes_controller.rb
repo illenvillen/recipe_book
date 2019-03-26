@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
 
-    before_action :load_recipe, :only => [:show, :edit, :update]
+  before_action :load_recipe, :only => [:show, :edit, :update]
 
   def index
     @recipe_search = RecipeSearch.new() 
@@ -20,10 +20,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new()
-
-    10.times do
-      @recipe.steps << Step.new(:recipe => @recipe)
-    end
   end
 
   def create
