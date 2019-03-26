@@ -31,7 +31,7 @@
                         .col-xs-4
                           =f.label :prep_time, "Prep Time (mins):"
                         .col-xs-8
-                          =f.input_field :prep_time, :class => 'form-control'
+                          =f.input_field :prep_time, :class => 'form-control', :min => 0
                           .text-error
                             =f.error :prep_time
                     .col-sm-6.col.xs-12 
@@ -39,7 +39,7 @@
                         .col-xs-4
                           =f.label :cook_time, "Cook Time (mins):"
                         .col-xs-8
-                          =f.input_field :cook_time, :class => 'form-control'
+                          =f.input_field :cook_time, :class => 'form-control', :min => 0
                           .text-error
                             =f.error :cook_time
                   .row
@@ -48,7 +48,7 @@
                         .col-xs-4
                           =f.label :cuisine_categories
                         .col-xs-8
-                          =f.collection_select :cuisine_categories, CuisineCategory.all, :id, :name, {}, {:multiple => true, :class => 'form-control'}
+                          =f.collection_select :cuisine_categories, CuisineCategory.all, :id, :name, {}, {:allow_blank => false, :multiple => true, :class => 'form-control'}
                           .text-error
                             =f.error :cuisine_categories
                     .col-sm-6.col.xs-12 
@@ -75,9 +75,9 @@
                         .form-group
                           = ia.simple_fields_for :amount do |amt|
                             .col-xs-3
-                              = amt.input_field :quantity, :class => 'form-control'
+                              = amt.input_field :quantity, :class => 'form-control', :min => 0
                             .col-xs-3
-                              = amt.input_field :measurement, :class => 'form-control'
+                              = amt.select :measurement, Amount::MEASUREMENTS, :class => 'form-control'
                           = ia.simple_fields_for :ingredient do |ing|
                             .col-xs-6
                               = ing.input_field :name, :class => 'form-control'

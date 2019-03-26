@@ -39,6 +39,10 @@
                     .col-xs-7
                       = @recipe.course_types.map { |ct| ct.name }.join(', ')
               %br
+              - @recipe.ingredient_amounts.each do |ia|
+                .row
+                  .col-xs-6= "#{ia.amount.quantity} #{Amount::MEASUREMENTS[ia.amount.measurement.to_i].first} #{ia.ingredient.name}"
+              %br
               -@recipe.steps.each do |step|
                 .row
                   .col-xs-1 
