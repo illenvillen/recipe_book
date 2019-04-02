@@ -17,4 +17,18 @@ class Amount < ApplicationRecord
     ["Grams", 12],
     ["Kilograms", 13]
   ]
+
+  def fraction_quantity
+    if quantity.present?
+      whole_number = decimal_quanity.to_i.to_s
+      fraction = (decimal_quanity%1).to_r.rationalize(0.1).to_s
+      return whole_number.to_i > 0 ? (whole_number + " " + fraction) : fraction
+    end
+
+    return nil
+  end
+
+  def decimal_quanity
+    quantity.present? ? quantity.split.map { |r| Rational(r) }.inject(:+).to_f : nil
+  end
 end

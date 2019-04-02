@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_160931) do
+ActiveRecord::Schema.define(version: 2019_04_02_152704) do
 
   create_table "amounts", force: :cascade do |t|
     t.string "measurement"
-    t.decimal "quantity"
+    t.string "quantity"
   end
 
   create_table "course_types", force: :cascade do |t|
